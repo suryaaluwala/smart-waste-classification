@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+venv/
+.env
+.ipynb_checkpoints/
+
+# Local data and extractor metadata
+/data/*
+!/data/.gitkeep
+__MACOSX/
+**/.DS_Store
+
+# Keep only the baseline checkpoint needed by the hosted app
+/models/*
+!/models/.gitkeep
+!/models/mobilenet_v2_baseline.pth
+
+# Keep numeric project results; omit dataset-derived contact sheets
+/reports/*
+!/reports/split_manifest.csv
+!/reports/mobilenet_v2_baseline_metrics.json
+!/reports/class_weighted_validation_comparison.json
+!/reports/trash_augmentation_validation_comparison.json
