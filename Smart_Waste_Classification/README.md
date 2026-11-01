@@ -1,6 +1,56 @@
 # Smart Waste Classification
 
-Deep learning project that classifies a waste image into one of six TrashNet categories and gives a basic disposal suggestion.
+Deep learning project that classifies a photo of a waste item into one of nine categories and suggests how to dispose of it.
+
+## Version 2 at a glance
+
+| | Version 1 | Version 2 |
+|---|---|---|
+| Data | TrashNet, 1,770 training photos | TrashNet + RealWaste + Garbage Classification v2, 13,552 training photos |
+| Classes | 6 | 9 (adds battery, organic, textile) |
+| Model | MobileNetV2, frozen backbone | MobileNetV3-Large, fully fine-tuned |
+| Six-class accuracy, real landfill photos | 44.6% | 90.1% |
+| Six-class accuracy, TrashNet photos | 82.0% | 90.0% |
+
+Version 2 scores **93.1% accuracy and 0.927 macro F1 across nine classes** on 2,434 unseen test photos, with near-copies of training photos excluded. On the full 2,902-photo test split the accuracy is also 93.1%. The comparison rows use the same photos for both models. Version 1 was never trained on RealWaste or Garbage v2, which explains part of the gap.
+
+### Run the app
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run app.py
+```
+
+The app has camera input, sample photos, an animated result, a Grad-CAM heatmap, a how-it-works tutorial and a results page. Predictions below 77% confidence, and blank photos, are shown as *Not sure*. Above that line the model covered 91% of test photos at 96.8% accuracy.
+
+### Rebuild from scratch
+
+```powershell
+# Put the Hugging Face parquet files in data/external/realwaste_hf and data/external/garbage_v2
+.\.venv\Scripts\python.exe -I src\prepare_unified_dataset.py
+.\.venv-directml\Scripts\python.exe src\train_unified.py --epochs 6
+.\.venv\Scripts\python.exe src\evaluate_unified.py
+.\.venv\Scripts\python.exe src\pick_app_samples.py
+.\.venv\Scripts\python.exe tests\test_inference.py
+```
+
+Training took 26 minutes on a Radeon RX 5500M through DirectML. Use `--device cpu` without a compatible GPU. Evaluation fits the calibration temperature and the *Not sure* threshold on validation data and stores them in the checkpoint.
+
+### Data sources
+
+- **TrashNet**: Thung & Yang, 2016. https://github.com/garythung/trashnet
+- **RealWaste**: Single et al., 2023, CC BY 4.0, doi 10.3390/info14120633. UCI ID 908. Copy used: https://huggingface.co/datasets/shahzaibvohra/realwaste
+- **Garbage Classification v2**: Suman Kunwar, MIT. Copy used: https://huggingface.co/datasets/omasteam/waste-garbage-management-dataset
+
+Labels are mapped as follows: biological, food organics and vegetation become `organic`; clothes, shoes and textile trash become `textile`; miscellaneous trash becomes `trash`. The merge removed 3,428 photos with an identical perceptual hash, 170 of which had a conflicting label, and capped Garbage v2 textile photos at 3,000.
+
+### Known limits
+
+- The model has no "not waste" class. Blank photos and noise give *Not sure*, but a clear photo of an unrelated object can still get a confident label.
+- It expects one item per photo.
+- RealWaste comes from Australia, so accuracy on Indian waste has not been measured.
+- Waste-stream advice is general guidance, and local rules take priority.
+
+The sections below document version 1 and remain the record of those experiments.
 
 ## Project scope
 

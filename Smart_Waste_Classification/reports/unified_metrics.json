@@ -1,0 +1,294 @@
+{
+  "model": "mobilenet_v3_large",
+  "classes": [
+    "battery",
+    "cardboard",
+    "glass",
+    "metal",
+    "organic",
+    "paper",
+    "plastic",
+    "textile",
+    "trash"
+  ],
+  "temperature": 0.5800000000000002,
+  "best_validation_macro_f1": 0.9337103597886469,
+  "test_images": 2902,
+  "test_accuracy": 0.9314266023432116,
+  "test_macro_f1": 0.9296034960904994,
+  "per_class": {
+    "battery": {
+      "precision": 0.9586206896551724,
+      "recall": 0.9928571428571429,
+      "f1-score": 0.9754385964912281,
+      "support": 140.0
+    },
+    "cardboard": {
+      "precision": 0.915625,
+      "recall": 0.9242902208201893,
+      "f1-score": 0.9199372056514914,
+      "support": 317.0
+    },
+    "glass": {
+      "precision": 0.9507186858316222,
+      "recall": 0.954639175257732,
+      "f1-score": 0.9526748971193416,
+      "support": 485.0
+    },
+    "metal": {
+      "precision": 0.8377483443708609,
+      "recall": 0.9547169811320755,
+      "f1-score": 0.892416225749559,
+      "support": 265.0
+    },
+    "organic": {
+      "precision": 0.967741935483871,
+      "recall": 0.9782608695652174,
+      "f1-score": 0.972972972972973,
+      "support": 276.0
+    },
+    "paper": {
+      "precision": 0.9174917491749175,
+      "recall": 0.9235880398671097,
+      "f1-score": 0.9205298013245033,
+      "support": 301.0
+    },
+    "plastic": {
+      "precision": 0.9551820728291317,
+      "recall": 0.8337408312958435,
+      "f1-score": 0.8903394255874674,
+      "support": 409.0
+    },
+    "textile": {
+      "precision": 0.9620758483033932,
+      "recall": 0.9698189134808853,
+      "f1-score": 0.9659318637274549,
+      "support": 497.0
+    },
+    "trash": {
+      "precision": 0.8846153846153846,
+      "recall": 0.8679245283018868,
+      "f1-score": 0.8761904761904762,
+      "support": 212.0
+    }
+  },
+  "calibration_error_before": 0.10778939270053053,
+  "calibration_error_after": 0.01452784578115016,
+  "selective_prediction": {
+    "threshold": 0.7700000000000005,
+    "coverage": 0.9090282563749138,
+    "accuracy_when_confident": 0.9677786201667931
+  },
+  "by_source": {
+    "garbagev2": {
+      "images": 1814,
+      "accuracy": 0.9597574421168688
+    },
+    "realwaste": {
+      "images": 711,
+      "accuracy": 0.8846694796061885
+    },
+    "trashnet": {
+      "images": 377,
+      "accuracy": 0.883289124668435
+    }
+  },
+  "leak_free_test": {
+    "images": 2434,
+    "accuracy": 0.9309778142974527,
+    "macro_f1": 0.9274963010443279,
+    "per_class": {
+      "battery": {
+        "precision": 0.9514563106796117,
+        "recall": 0.98989898989899,
+        "f1-score": 0.9702970297029703,
+        "support": 99.0
+      },
+      "cardboard": {
+        "precision": 0.9008264462809917,
+        "recall": 0.923728813559322,
+        "f1-score": 0.9121338912133892,
+        "support": 236.0
+      },
+      "glass": {
+        "precision": 0.9487870619946092,
+        "recall": 0.9487870619946092,
+        "f1-score": 0.9487870619946092,
+        "support": 371.0
+      },
+      "metal": {
+        "precision": 0.8599221789883269,
+        "recall": 0.9650655021834061,
+        "f1-score": 0.9094650205761317,
+        "support": 229.0
+      },
+      "organic": {
+        "precision": 0.966789667896679,
+        "recall": 0.9812734082397003,
+        "f1-score": 0.9739776951672863,
+        "support": 267.0
+      },
+      "paper": {
+        "precision": 0.9068825910931174,
+        "recall": 0.9218106995884774,
+        "f1-score": 0.9142857142857143,
+        "support": 243.0
+      },
+      "plastic": {
+        "precision": 0.9584775086505191,
+        "recall": 0.8343373493975904,
+        "f1-score": 0.8921095008051529,
+        "support": 332.0
+      },
+      "textile": {
+        "precision": 0.9622641509433962,
+        "recall": 0.9683544303797469,
+        "f1-score": 0.9652996845425867,
+        "support": 474.0
+      },
+      "trash": {
+        "precision": 0.8757062146892656,
+        "recall": 0.8469945355191257,
+        "f1-score": 0.8611111111111112,
+        "support": 183.0
+      }
+    },
+    "by_source": {
+      "garbagev2": {
+        "images": 1442,
+        "accuracy": 0.9549237170596394
+      },
+      "realwaste": {
+        "images": 653,
+        "accuracy": 0.8989280245022971
+      },
+      "trashnet": {
+        "images": 339,
+        "accuracy": 0.8908554572271387
+      }
+    }
+  },
+  "six_class_comparison_leak_free": {
+    "all": {
+      "images": 1594,
+      "old_baseline_accuracy": 0.5972396486825596,
+      "new_model_accuracy": 0.9196988707653702
+    },
+    "garbagev2": {
+      "images": 771,
+      "old_baseline_accuracy": 0.5940337224383917,
+      "new_model_accuracy": 0.940337224383917
+    },
+    "realwaste": {
+      "images": 484,
+      "old_baseline_accuracy": 0.4462809917355372,
+      "new_model_accuracy": 0.9008264462809917
+    },
+    "trashnet": {
+      "images": 339,
+      "old_baseline_accuracy": 0.8200589970501475,
+      "new_model_accuracy": 0.8997050147492626
+    }
+  },
+  "confusion_matrix": [
+    [
+      139,
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      293,
+      0,
+      7,
+      0,
+      14,
+      2,
+      1,
+      0
+    ],
+    [
+      1,
+      0,
+      463,
+      13,
+      1,
+      0,
+      5,
+      1,
+      1
+    ],
+    [
+      2,
+      3,
+      2,
+      253,
+      0,
+      0,
+      3,
+      0,
+      2
+    ],
+    [
+      0,
+      0,
+      0,
+      1,
+      270,
+      0,
+      1,
+      2,
+      2
+    ],
+    [
+      1,
+      12,
+      2,
+      1,
+      0,
+      278,
+      0,
+      5,
+      2
+    ],
+    [
+      0,
+      11,
+      17,
+      22,
+      0,
+      7,
+      341,
+      2,
+      9
+    ],
+    [
+      1,
+      0,
+      2,
+      1,
+      2,
+      1,
+      0,
+      482,
+      8
+    ],
+    [
+      1,
+      1,
+      1,
+      3,
+      6,
+      3,
+      5,
+      8,
+      184
+    ]
+  ]
+}

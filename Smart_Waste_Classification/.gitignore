@@ -16,10 +16,16 @@ __MACOSX/
 /models/*
 !/models/.gitkeep
 !/models/mobilenet_v2_baseline.pth
+!/models/mobilenet_v3_unified.pth
 
 # Keep numeric project results; omit dataset-derived contact sheets
 /reports/*
 !/reports/split_manifest.csv
+!/reports/unified_manifest.csv
+!/reports/unified_metrics.json
+!/reports/unified_confusion_matrix.png
+!/reports/unified_training_history.json
 !/reports/mobilenet_v2_baseline_metrics.json
 !/reports/class_weighted_validation_comparison.json
 !/reports/trash_augmentation_validation_comparison.json
+!/reports/Smart_Waste_Classification_Project_Report.docx
